@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="script/scriptRecibo.js" defer></script>
+    <title>Recibo</title>
+</head>
+<body>
+    <div class="w-[720px] bg-zinc-200">
+        <div class="w-full mb-5 flex flex-col items-center justify-center">
+            <div class="w-[100px] h-[100px] bg-zinc-500 text-white text-center flex items-center justify-center">
+                LOGO
+            </div>
+
+            <div class="flex flex-col items-center font-bold">
+                <h2 class="font-bold text-[17px] mb-3">Recibo de venda</h2>
+                
+                <div class="flex items-center space-x-2">
+                   <p>GS Store - Vendas e Manutenção de Aparelhos</p>
+                   <span>|</span>
+                   <p>Rua Isaac Francisco Pimenta 23 B</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>Whatsapp: (11) 99666-8683</p>
+                   <span>|</span>
+                   <p>Email: </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-2 mb-1">
+            <h2 class="text-center border-b-2 font-bold text-[13px]">DADOS DO CLIENTE</h2>
+            <div class="" id="info-cliente"></div>
+        </div>
+        <div class="border-2 mb-1">
+            <h2 class="text-center border-b-2 font-bold text-[13px]">DADOS DO PRODUTO</h2>
+            <div class="grid grid-cols-3 w-full pl-2 border-b-1">
+                <p>Produto</p>
+                <p>Quantidade</p>
+                <p>Valor</p>
+            </div>
+            <div class="" id="info-produto"></div>
+        </div>
+        <div class="border-2 mb-1">
+            <h2 class="text-center border-b-2 font-bold text-[13px]">DADOS DE PAGAMENTO</h2>
+            <div class="" id="info-pagamento"></div>
+        </div>
+        <div class="border-2">
+            <h2 class="text-center border-b-2 font-bold text-[13px]">OBSERVAÇÃO DO PRODUTO</h2>
+            <div class="text-center" id="info-obserProduto"></div>
+        </div>
+
+        <div class="mt-6">
+            <p class="pb-18 border-b-1 text-[15px] text-center">Assinatura da Loja</p>
+        </div>
+        <div class="mt-6">
+            <p class="pb-18 border-b-1 text-[15px] text-center" id="assCliente"></p>
+        </div>
+    </div>
+</body>
+</html>
