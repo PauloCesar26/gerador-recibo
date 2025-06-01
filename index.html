@@ -4,176 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="script/scriptForm.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css"/>
-    <title>Gerar Recibo</title>
+    <title>Gerador Recibo</title>
 </head>
-<body class="w-full h-auto min-width-[200px] max-width-[2300px] ml-auto mr-auto box-border bg-zinc-500">
-    <div class="shadow max-w-[650px] min-w-[300px] bg-zinc-950 rounded-[15px] ml-3 mr-3 md:ml-auto md:mr-auto p-10 space-y-5 flex flex-col items-center mt-5 mb-5">
-        <div class="w-[100px] h-[100px] bg-zinc-500 text-white text-center flex items-center justify-center">
-            LOGO
-        </div>
-        <h1 class="text-center font-bold text-[1.5rem] border-b-1 mb-10 text-white">Recibo de venda</h1>
+<body class="h-[100vh] p-0 m-0 box-border flex items-center justify-center align-center bg-zinc-500">
+    <nav class="w-[400px] bg-zinc-950 flex flex-col items-center p-6 gap-5 rounded-[10px] text-white">
+        <h2 class="text-[1.3rem]">Menu de opção</h2>
 
-        <form class="flex flex-col w-full pl-5 pr-5" id="form">
-            <div class="border-b-2 border-zinc-100 flex flex-col space-y-5 pb-3">
-                <h2>Dados do cliente</h2>
-                <div class="flex flex-col flex-wrap space-y-5 border-b-1 border-blue-100/50 pb-4 mb-2">
-                    <div class="flex flex-col">
-                        <span class="flex flex-col">
-                            <label for="name">Nome:</label>
-                            <input type="text" id="name" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                        </span>
-                        <p id="erro-name" class="text-red-900"></p>
-                    </div>
+        <ul class="flex flex-col gap-3 w-full">
+            <button  
+                onClick="window.open('recibo-venda/index.html', '_blank')"
+                class="p-3 bg-zinc-700 text-center rounded-[10px] text-white cursor-pointer text-[1.1rem]  bg-zinc-700 hover:bg-zinc-800 ease-in-out transition duration-[0.3s]">
+                Rebico Venda
+            </button>
+            <button 
+                onClick="window.open('', '_blank')"
+                class="p-3 bg-zinc-700 text-center rounded-[10px] text-white cursor-pointer text-[1.1rem]  bg-zinc-700 hover:bg-zinc-800 ease-in-out transition duration-[0.3s]">
+                Recibo OS
+            </button>
+        </ul>
+    </nav>
 
-                    <div class="flex flex-col">
-                        <span class="flex flex-col">
-                            <label for="email">Email:</label>
-                            <input type="text" id="email" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                        </span>
-                        <p id="erro-email" class="text-red-900"></p>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <span class="flex flex-col">
-                            <label for="cpf">CPF:</label>
-                            <input type="text" id="cpf" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                        </span>
-                        <p id="erro-cpf" class="text-red-900"></p>
-                    </div>
-                </div>
-                <div class="flex flex-col space-y-5">
-                    <div class="flex flex-col space-y-5">
-                        <div class="flex flex-col">
-                            <span class="flex flex-col">
-                                <label for="cep">CEP:</label>
-                                <input type="text" id="cep" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                            </span>
-                            <p id="erro-cep" class="text-red-900"></p>
-                        </div>
-        
-                        <div class="flex flex-col">
-                            <span class="flex flex-col">
-                                <label for="address">Endereço:</label>
-                                <input type="text" id="address" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                            </span>
-                            <p id="erro-address" class="text-red-900"></p>
-                        </div>
-    
-                        <div class="flex flex-col">
-                            <span class="flex flex-col">
-                                <label for="numResi">Número da residencia: </label>
-                                <input type="number" id="numResi" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                            </span>
-                            <p id="erro-residencia" class="text-red-900"></p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col space-y-5">
-                        <div class="flex flex-col">
-                            <span class="flex flex-col">
-                                <label for="estado">Estado:</label>
-                                <input type="text" id="estado" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                            </span>
-                            <p id="erro-estado" class="text-red-900"></p>
-                        </div>
-    
-                        <div class="flex flex-col">
-                            <span class="flex flex-col">
-                                <label for="cidade">Cidade:</label>
-                                <input type="text" id="cidade" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                            </span>
-                            <p id="erro-cidade" class="text-red-900"></p>
-                        </div>
-    
-                        <div class="flex flex-col">
-                            <span class="flex flex-col">
-                                <label for="bairro">Bairro:</label>
-                                <input type="text" id="bairro" class="bg-zinc-100  rounded-[6px] pt-1 pb-1 pl-2">
-                            </span>
-                            <p id="erro-bairro" class="text-red-900"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-b-2 border-zinc-100 flex flex-col space-y-2 pb-3 pt-5 items-start">
-                <h2 class="mb-2">Dados do produto</h2>
-                <div class="flex flex-col space-y-5 w-full" id="produtos">
-                
-                </div>
-                <button type="button" id="add-produto" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white cursor-pointer transition duration-[0.3s]">Adicionar produto</button>
-            </div>
-
-            <div class="border-b-2 border-zinc-100 flex flex-col pb-3 pt-5">
-                <h2 class="mb-5">Dados do pagamento</h2>
-                <div class="flex flex-col space-y-3 ">
-                    <div class="">
-                        <span class="flex items-center gap-2">
-                            <label for="formaPagamento">Forma de pagamento:</label>
-                            <select name="" id="pagamento" class="bg-zinc-100 text-black pt-1 pb-1 pl-1 pr-3 rounded-[10px]">
-                                <option value="">Selecione</option>
-                                <option value="Pix">Pix</option>
-                                <option value="Crédito">Crédito</option>
-                                <option value="Débito">Débito</option>
-                                <option value="Dinheiro">Dinheiro físico</option>
-                            </select>
-                        </span>
-                        <p id="erro-select" class="text-red-900"></p>
-                    </div>
-                    <div class="flex flex-col space-y-3">
-                        <span class="flex flex-col">
-                            <label for="valorPagar">Valor:</label>
-                            <input type="number" id="valorPagar" class="bg-zinc-100 w-25 rounded-[6px] pt-1 pb-1 pl-2">
-                        </span>
-                        <p id="erro-valor"class="text-red-900"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-b-2 border-zinc-100 flex flex-col space-y-2 pb-4 pt-5">
-                <h2>Observações do produto</h2>
-                <div class="space-x-2 flex flex-col">
-                    <span>
-                        <input type="checkbox"  id="checkboxLacrado">
-                        <label for="">Lacrado</label>
-                    </span>
-                    <textarea id="obserLacrado" class="bg-white rounded-[10px] p-2 min-h-16"></textarea>
-                </div>
-                <div class="space-x-2 flex flex-col">
-                    <span>
-                        <input type="checkbox" id="checkboxSemiNovo">
-                        <label for="">Semi-novo</label>
-                    </span>
-                    <textarea id="obserSemiNovo" class="bg-white rounded-[10px] p-2 min-h-16"></textarea>
-                </div>
-            </div>
-            <div class="flex flex-col space-y-2 pt-3">
-                <button type="submit" class="pt-3 pb-3 bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white rounded-[10px] cursor-pointer transition duration-[0.3s]">Enviar</button>
-                <!-- <button type="button" onClick="imprimirRecibo()" class="pt-3 pb-3 bg-zinc-900 text-white rounded-[10px] cursor-pointer">Imprimir</button> -->
-                <button type="reset" class="pt-3 pb-3 bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white rounded-[10px] cursor-pointer transition duration-[0.3s]">Apagar</button>
-            </div>
-        </form>
-    </div>
-
-    <div id="loadingOverlay" class="hidden">
-        <div class="
-        fixed 
-        top-0 
-        left-0
-        w-full
-        h-full
-        bg-white
-        opacity-90
-        z-50
-        flex
-        items-center
-        justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle-icon lucide-loader-circle animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-        </div>
-    </div>
+    <div id="app"></div>
 </body>
 </html>
