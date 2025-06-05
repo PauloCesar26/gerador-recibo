@@ -108,6 +108,11 @@
                 <button type="button" id="add-produto" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white cursor-pointer transition duration-[0.3s]">Adicionar produto</button>
             </div>
 
+            <div class="border-b-2 border-zinc-100 flex flex-col space-y-2 pb-3 pt-5 items-start">
+                <h2 class="mb-2">Componente danificado</h2>
+                
+            </div>
+
             <div class="border-b-2 border-zinc-100 flex flex-col pb-3 pt-5">
                 <h2 class="mb-5">Dados do pagamento</h2>
                 <div class="flex flex-col space-y-3 ">
@@ -127,9 +132,7 @@
                     <div class="flex flex-col space-y-3">
                         <span class="flex flex-col">
                             <label for="valorPagar">Valor:</label>
-                            <div class="bg-zinc-100 w-25 rounded-[6px] pt-1 pb-1 pl-2 h-8">
-                                <p id="valor-total"></p>
-                            </div>
+                            <input type="number" id="valorPagar" class="bg-zinc-100 w-25 rounded-[6px] pt-1 pb-1 pl-2">
                         </span>
                         <p id="erro-valor"class="text-red-900"></p>
                     </div>

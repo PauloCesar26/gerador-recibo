@@ -4,11 +4,6 @@ const infoProduto = document.getElementById("info-produto");
 const infoPagamento = document.getElementById("info-pagamento");
 const infoObservacao = document.getElementById("info-obserProduto");
 
-const loandingOverlay = document.getElementById("loadingOverlay");
-function showLoandingOverlay(){
-    loandingOverlay.classList.remove("hidden");
-}
-
 window.onload = function() {
     //Resgatando Informações do cliente
     let nameCliente = localStorage.getItem("nameCliente");
@@ -30,6 +25,7 @@ window.onload = function() {
 
     //Resgatando os dados de pagamento
     let formaPagamento = localStorage.getItem("formaPagamento");
+    let valor = localStorage.getItem("valorPagar");
 
     let assCliente = document.getElementById("assCliente");
     
@@ -83,28 +79,15 @@ window.onload = function() {
                 </div>
             `;
         });
-        
     }
     else{
         infoProduto.textContent = "Nenhum produto salvo."
     }
-    
-    
 
-
-    const valores = produtosSalvos.map(produto => produto.valor);
-
-    const soma = valores.reduce((acumulador, valorAtual) => {
-        //Number() usado para converter os valores que são salvos como string
-        return acumulador + Number(valorAtual)
-    }, 0);
-
-    
     infoPagamento.innerHTML = `
         <div class="grid grid-cols-2 pl-2">
             <p class="">Forma de pagamento: ${formaPagamento}</p>
-            <p class="">Valores: ${valores.map((valor) => `${valor}`).join(" + ")}</p>
-            <p class="">Valor total: ${soma}</p>
+            <p class="">Valor: ${valor}</p>
         </div>
     `;
 
@@ -117,11 +100,8 @@ window.onload = function() {
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
 
-    showLoandingOverlay();
     setTimeout(() => {
-        loandingOverlay.classList.add("hidden");
-
         window.print();
-    }, 900);
+    }, 500);
 }
 

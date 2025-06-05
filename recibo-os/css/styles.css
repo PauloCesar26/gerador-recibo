@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+h2{
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+}
+label{
+    font-weight: 400;
+    color: rgb(238, 238, 238);
+}
+.shadow{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
