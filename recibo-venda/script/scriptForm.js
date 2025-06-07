@@ -38,6 +38,30 @@ function showLoandingOverlay(){
     loandingOverlay.classList.remove("hidden")
 }
 
+const closeModal = document.querySelector("#close-modal");
+const modal = document.querySelector("#modal");
+const fade = document.querySelector("#fade");
+const modalMessage = document.querySelector("#modal-message");
+
+const toggleModal = () => {
+    [modal, fade].forEach((el) => el.classList.toggle("hide"));
+};
+const showModal = (message) => {
+    modalMessage.textContent = message;
+    toggleModal();
+
+};
+closeModal.addEventListener("click", () => {
+    toggleModal();
+    showLoandingOverlay();
+    
+    setTimeout(() => {
+        window.open("dados.html", "_blank");
+        
+        form.submit();
+    }, 900);
+});
+
 const addProduct = () => {
     const idProduto = `${contProdutos}`;
 
@@ -217,13 +241,6 @@ form.addEventListener("submit", (event) => {
     localStorage.setItem("obserSemiNovo", obserSemiNovo.value);
 
     //COLOCAR MODAL 
-    alert("Dados salvos!");
-
-    showLoandingOverlay();
-
-    setTimeout(() => {
-        window.open("dados.html", "_blank");
-        
-        form.submit();
-    }, 900);
+    showModal("Dados salvos!");
+    // alert("Dados salvos!");
 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="app.js" defer></script>
     <title>Gerador Recibo</title>
 </head>
 <body class="h-[100vh] p-0 m-0 box-border flex items-center justify-center align-center bg-zinc-500">
@@ -17,13 +18,11 @@
                 Rebico Venda
             </button>
             <button 
-                onClick="window.open('', '_blank')"
+                onClick="window.open('recibo-os/index.html', '_blank')"
                 class="p-3 bg-zinc-700 text-center rounded-[10px] text-white cursor-pointer text-[1.1rem]  bg-zinc-700 hover:bg-zinc-800 ease-in-out transition duration-[0.3s]">
                 Recibo OS
             </button>
         </ul>
     </nav>
-
-    <div id="app"></div>
 </body>
 </html>

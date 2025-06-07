@@ -4,6 +4,11 @@ const infoProduto = document.getElementById("info-produto");
 const infoPagamento = document.getElementById("info-pagamento");
 const infoObservacao = document.getElementById("info-obserProduto");
 
+const loandingOverlay = document.getElementById("loadingOverlay");
+function showLoandingOverlay(){
+    loandingOverlay.classList.remove("hidden");
+}
+
 window.onload = function() {
     //Resgatando Informações do cliente
     let nameCliente = localStorage.getItem("nameCliente");
@@ -17,15 +22,16 @@ window.onload = function() {
     let bairroCliente = localStorage.getItem("bairroCliente");
 
     //Resgatando a observação do produto
-    let textLacrado = localStorage.getItem("obserLacrado");
-    let textSemiNovo = localStorage.getItem("obserSemiNovo");
+  
+
+    let checkboxTelaComTouch = localStorage.getItem("checkboxTelaComTouch");
+    console.log(checkboxTelaComTouch);
 
     //Resgatando os produtos salvos
     const produtosSalvos = JSON.parse(localStorage.getItem("produtos"));
 
     //Resgatando os dados de pagamento
     let formaPagamento = localStorage.getItem("formaPagamento");
-    let valor = localStorage.getItem("valorPagar");
 
     let assCliente = document.getElementById("assCliente");
     
@@ -65,43 +71,63 @@ window.onload = function() {
             </div>
         </div>
     `;
+    
+    //Pegando a quantidade de produto e pegando o valor por 1 unidade
+    const qtd = produtosSalvos.map(produto => produto.quantidade);
+    const valores = produtosSalvos.map(produto => produto.valor);
+    console.log(qtd);
+    console.log(valores);
+
+    //Multiplicando a quantidade pelo valor de uma unidade
+    const multiQtdValor = qtd.map((qtdProduto, index) => {
+        // qtdProduto: qtdProduto,
+        // valorA: valores[index],
+        return qtdProduto * valores[index];
+    });
+    console.log(multiQtdValor)
+
+   //Explicando a logica:
+    //1 produto por unidade é 50 reais
+        //Então se for 2 produto, o valor final tem que ser 100 reais
+        //Com isso a função multiQtdValor é responsavel por pegar a quantidade e multiplicar pelo valor de uma unidade
+
+    //Soma vai pegar os valores já multiplicado e somar tudo para ser o pagamento final 
+    const valorFinalPagar = multiQtdValor.reduce((acumulador, valorAtual) => {
+        //Number() usado para converter os valores que são salvos como string
+        return acumulador + Number(valorAtual)
+    }, 0);
 
     if(produtosSalvos && produtosSalvos.length > 0){
         produtosSalvos.forEach((produto, index) => {
             infoProduto.innerHTML += 
             `
-                <div class="pl-2 flex flex-col">
-                    <div class="grid grid-cols-3 w-full mb-1">
-                        <p>${produto.nome}</p>
-                        <p>${produto.quantidade}</p>
-                        <p>${produto.valor}</p>
-                    </div>
-                </div>
+                <p>${produto.nome}</p>
+                <p>${produto.valor}</p>
+                <p>${produto.quantidade}</p>
+                <p>${multiQtdValor[index]}</p>
             `;
-        });
+        });    
     }
     else{
         infoProduto.textContent = "Nenhum produto salvo."
     }
-
+    
     infoPagamento.innerHTML = `
         <div class="grid grid-cols-2 pl-2">
             <p class="">Forma de pagamento: ${formaPagamento}</p>
-            <p class="">Valor: ${valor}</p>
+            <p class="">Valor total: R$${valorFinalPagar}</p>
         </div>
     `;
 
-    if(textLacrado){
-        infoObservacao.innerHTML += textLacrado.replace(/\n/g, "<br>"); 
-    }
-    if(textSemiNovo){
-        infoObservacao.innerHTML += textSemiNovo.replace(/\n/g, "<br>");
-    }
+    
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
 
+    showLoandingOverlay();
     setTimeout(() => {
+        loandingOverlay.classList.add("hidden");
+
         window.print();
-    }, 500);
+    }, 900);
 }
 

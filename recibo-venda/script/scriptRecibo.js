@@ -69,42 +69,51 @@ window.onload = function() {
             </div>
         </div>
     `;
+    
+    //Pegando a quantidade de produto e pegando o valor por 1 unidade
+    const qtd = produtosSalvos.map(produto => produto.quantidade);
+    const valores = produtosSalvos.map(produto => produto.valor);
+    console.log(qtd);
+    console.log(valores);
+
+    //Multiplicando a quantidade pelo valor de uma unidade
+    const multiQtdValor = qtd.map((qtdProduto, index) => {
+        // qtdProduto: qtdProduto,
+        // valorA: valores[index],
+        return qtdProduto * valores[index];
+    });
+    console.log(multiQtdValor)
+
+   //Explicando a logica:
+    //1 produto por unidade é 50 reais
+        //Então se for 2 produto, o valor final tem que ser 100 reais
+        //Com isso a função multiQtdValor é responsavel por pegar a quantidade e multiplicar pelo valor de uma unidade
+
+    //Soma vai pegar os valores já multiplicado e somar tudo para ser o pagamento final 
+    const valorFinalPagar = multiQtdValor.reduce((acumulador, valorAtual) => {
+        //Number() usado para converter os valores que são salvos como string
+        return acumulador + Number(valorAtual)
+    }, 0);
 
     if(produtosSalvos && produtosSalvos.length > 0){
         produtosSalvos.forEach((produto, index) => {
             infoProduto.innerHTML += 
             `
-                <div class="pl-2 flex flex-col">
-                    <div class="grid grid-cols-3 w-full mb-1">
-                        <p>${produto.nome}</p>
-                        <p>${produto.quantidade}</p>
-                        <p>${produto.valor}</p>
-                    </div>
-                </div>
+                <p>${produto.nome}</p>
+                <p>${produto.valor}</p>
+                <p>${produto.quantidade}</p>
+                <p>${multiQtdValor[index]}</p>
             `;
-        });
-        
+        });    
     }
     else{
         infoProduto.textContent = "Nenhum produto salvo."
     }
     
-    
-
-
-    const valores = produtosSalvos.map(produto => produto.valor);
-
-    const soma = valores.reduce((acumulador, valorAtual) => {
-        //Number() usado para converter os valores que são salvos como string
-        return acumulador + Number(valorAtual)
-    }, 0);
-
-    
     infoPagamento.innerHTML = `
         <div class="grid grid-cols-2 pl-2">
             <p class="">Forma de pagamento: ${formaPagamento}</p>
-            <p class="">Valores: ${valores.map((valor) => `${valor}`).join(" + ")}</p>
-            <p class="">Valor total: ${soma}</p>
+            <p class="">Valor total: R$${valorFinalPagar}</p>
         </div>
     `;
 
@@ -117,11 +126,11 @@ window.onload = function() {
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
 
-    showLoandingOverlay();
-    setTimeout(() => {
-        loandingOverlay.classList.add("hidden");
+    // showLoandingOverlay();
+    // setTimeout(() => {
+    //     loandingOverlay.classList.add("hidden");
 
-        window.print();
-    }, 900);
+    //     window.print();
+    // }, 900);
 }
 

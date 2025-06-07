@@ -12,6 +12,14 @@
     <title>Gerar Recibo</title>
 </head>
 <body class="w-full h-auto min-width-[200px] max-width-[2300px] ml-auto mr-auto box-border bg-zinc-500">
+    <div id="fade" class="hide"></div>
+    <div  id="modal" class="hide max-md:w-65 md:w-80">
+        <p id="modal-message">Dados salvos!</p>
+        <div class="container-btn">
+            <button id="close-modal" class="bg-zinc-950 text-white rounded-[10px] cursor-pointer hover:bg-zinc-800 ease-in-out">OK</button>
+        </div>
+    </div> 
+
     <div class="shadow max-w-[650px] min-w-[300px] bg-zinc-950 rounded-[15px] ml-3 mr-3 md:ml-auto md:mr-auto p-10 space-y-5 flex flex-col items-center mt-5 mb-5">
         <div class="w-[100px] h-[100px] bg-zinc-500 text-white text-center flex items-center justify-center">
             LOGO
@@ -112,26 +120,17 @@
                 <h2 class="mb-5">Dados do pagamento</h2>
                 <div class="flex flex-col space-y-3 ">
                     <div class="">
-                        <span class="flex items-center gap-2">
+                        <span class="md:flex items-center space-x-2 ">
                             <label for="formaPagamento">Forma de pagamento:</label>
                             <select name="" id="pagamento" class="bg-zinc-100 text-black pt-1 pb-1 pl-1 pr-3 rounded-[10px]">
                                 <option value="">Selecione</option>
                                 <option value="Pix">Pix</option>
                                 <option value="Crédito">Crédito</option>
                                 <option value="Débito">Débito</option>
-                                <option value="Dinheiro">Dinheiro físico</option>
+                                <option value="Dinheiro físico">Dinheiro físico</option>
                             </select>
                         </span>
                         <p id="erro-select" class="text-red-900"></p>
-                    </div>
-                    <div class="flex flex-col space-y-3">
-                        <span class="flex flex-col">
-                            <label for="valorPagar">Valor:</label>
-                            <div class="bg-zinc-100 w-25 rounded-[6px] pt-1 pb-1 pl-2 h-8">
-                                <p id="valor-total"></p>
-                            </div>
-                        </span>
-                        <p id="erro-valor"class="text-red-900"></p>
                     </div>
                 </div>
             </div>
@@ -159,7 +158,7 @@
                 <button type="reset" class="pt-3 pb-3 bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white rounded-[10px] cursor-pointer transition duration-[0.3s]">Apagar</button>
             </div>
         </form>
-    </div>
+    </div>  
 
     <div id="loadingOverlay" class="hidden">
         <div class="

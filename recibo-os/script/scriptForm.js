@@ -28,15 +28,46 @@ const buttonProduct = document.getElementById("add-produto");
 let contProdutos = 1;
 const produtos = [];
 
-const checkboxLacrado = document.getElementById("checkboxLacrado");
-const checkboxSemiNovo = document.getElementById("checkboxSemiNovo");
-const obserLacrado = document.getElementById("obserLacrado");
-const obserSemiNovo = document.getElementById("obserSemiNovo");
+const checkboxTelaComTouch = document.getElementById("checkboxTelaComTouch");
+const checkboxTelaSemTouch = document.getElementById("checkboxTelaSemTouch");
+const checkboxTampa = document.getElementById("checkboxTampa");
+const checkboxBotao = document.getElementById("checkboxBotao");
+const checkboxBateria = document.getElementById("checkboxBateria");
+const checkboxAltoFalante = document.getElementById("checkboxAltoFalante");
+const checkboxConector = document.getElementById("checkboxConector");
+const checkboxPlaca = document.getElementById("checkboxPlaca");
+const checkboxNaoLiga = document.getElementById("checkboxNaoLiga");
+const checkboxOutros = document.getElementById("checkboxOutros");
+const obserReparo = document.getElementById("obserReparo");
 
 const loandingOverlay = document.getElementById("loadingOverlay");
 function showLoandingOverlay(){
     loandingOverlay.classList.remove("hidden")
 }
+
+const closeModal = document.querySelector("#close-modal");
+const modal = document.querySelector("#modal");
+const fade = document.querySelector("#fade");
+const modalMessage = document.querySelector("#modal-message");
+
+const toggleModal = () => {
+    [modal, fade].forEach((el) => el.classList.toggle("hide"));
+};
+const showModal = (message) => {
+    modalMessage.textContent = message;
+    toggleModal();
+
+};
+closeModal.addEventListener("click", () => {
+    toggleModal();
+    showLoandingOverlay();
+    
+    setTimeout(() => {
+        window.open("dados.html", "_blank");
+        
+        form.submit();
+    }, 900);
+});
 
 const addProduct = () => {
     const idProduto = `${contProdutos}`;
@@ -90,98 +121,81 @@ const removeProduct = (id) => {
 
 buttonProduct.addEventListener("click", addProduct);
 
-checkboxLacrado.addEventListener("change", () => {
-    if(checkboxLacrado.checked){
-        obserLacrado.textContent = "Produto lacrado.";
-    } 
-    else{
-        obserLacrado.textContent = "";
-    }
-});
-checkboxSemiNovo.addEventListener("change", () => {
-    if(checkboxSemiNovo.checked){
-        obserSemiNovo.textContent = "Produto Semi-Novo. \nTodos os teste foram devidamente realizados.";
-    } 
-    else{
-        obserSemiNovo.textContent = "";
-    }
-});
-
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     //Verificando dados e salvando as info do cliente
-    if(nameCliente.value.trim() === ""){
-        erroName.textContent = "Preencha o nome corretamente.";
-        return;
-    }
-    else{
-        erroName.textContent = "";
-    }
+    // if(nameCliente.value.trim() === ""){
+    //     erroName.textContent = "Preencha o nome corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroName.textContent = "";
+    // }
 
-    if(emailCliente.value.trim() === ""){
-        erroEmail.textContent = "Preencha o email corretamente.";
-        return;
-    }
-    else{
-        erroEmail.textContent = "";
-    }
+    // if(emailCliente.value.trim() === ""){
+    //     erroEmail.textContent = "Preencha o email corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroEmail.textContent = "";
+    // }
 
-    if(cpfCliente.value.trim() === ""){
-        erroCpf.textContent = "Preencha o CPF corretamente.";
-        return;
-    }
-    else{
-        erroCpf.textContent = "";
-    }
+    // if(cpfCliente.value.trim() === ""){
+    //     erroCpf.textContent = "Preencha o CPF corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroCpf.textContent = "";
+    // }
 
-    if(cepCliente.value.trim() === ""){
-        erroCep.textContent = "Preencha o CEP corretamente.";
-        return;
-    }
-    else{
-        erroCep.textContent = "";
-    }
+    // if(cepCliente.value.trim() === ""){
+    //     erroCep.textContent = "Preencha o CEP corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroCep.textContent = "";
+    // }
 
-    if(addressCliente.value.trim() === ""){
-        erroAddress.textContent = "Preencha o endereço corretamente.";
-        return;
-    }
-    else{
-        erroAddress.textContent = "";
-    }
+    // if(addressCliente.value.trim() === ""){
+    //     erroAddress.textContent = "Preencha o endereço corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroAddress.textContent = "";
+    // }
 
-    if(numHomeCliente.value.trim() === ""){
-        erroResidencia.textContent = "Preencha o número da residencia corretamente.";
-        return;
-    }
-    else{
-        erroResidencia.textContent = "";
-    }
+    // if(numHomeCliente.value.trim() === ""){
+    //     erroResidencia.textContent = "Preencha o número da residencia corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroResidencia.textContent = "";
+    // }
 
-    if(estadoCliente.value.trim() === ""){
-        erroEstado.textContent = "Preencha o número da residencia corretamente.";
-        return;
-    }
-    else{
-        erroEstado.textContent = "";
-    }
+    // if(estadoCliente.value.trim() === ""){
+    //     erroEstado.textContent = "Preencha o número da residencia corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroEstado.textContent = "";
+    // }
 
-    if(selectPagamento.value === "") {
-        erroSelect.textContent = "Selecione uma forma de pagamaneto";
-        return;
-    }
-    else{
-        erroSelect.textContent = "";
-    }
+    // if(selectPagamento.value === "") {
+    //     erroSelect.textContent = "Selecione uma forma de pagamaneto";
+    //     return;
+    // }
+    // else{
+    //     erroSelect.textContent = "";
+    // }
 
-    if(valor.value.trim() === ""){
-        erroValor.textContent = "Preencha o valor corretamente.";
-        return;
-    }
-    else{
-        erroValor.textContent = "";
-    }
+    // if(valor.value.trim() === ""){
+    //     erroValor.textContent = "Preencha o valor corretamente.";
+    //     return;
+    // }
+    // else{
+    //     erroValor.textContent = "";
+    // }
 
     localStorage.setItem("nameCliente", nameCliente.value);
     localStorage.setItem("emailCliente", emailCliente.value);
@@ -192,6 +206,10 @@ form.addEventListener("submit", (event) => {
     localStorage.setItem("estadoCliente", estadoCliente.value);
     localStorage.setItem("cidadeCliente", cidadeCliente.value);
     localStorage.setItem("bairroCliente", bairroCliente.value);
+
+    //Salvando checkbox reparo
+    localStorage.setItem("checkboxTelaComTouch", checkboxTelaComTouch.value);
+
 
     //Salvar produtos
     const selectProdutos = document.querySelectorAll(".produto");
@@ -208,21 +226,14 @@ form.addEventListener("submit", (event) => {
 
     //Salvando forma de pagamaneto
     const formaSelecionada = selectPagamento.value;
-    const valorPagar = valor.value;
-    localStorage.setItem("valorPagar", valorPagar);
+    // const valorPagar = valor.value;
+    // localStorage.setItem("valorPagar", valorPagar);
     localStorage.setItem("formaPagamento", formaSelecionada);
 
     //Salvando as observações
-    localStorage.setItem("obserLacrado", obserLacrado.value);
-    localStorage.setItem("obserSemiNovo", obserSemiNovo.value);
 
-    alert("Dados salvos!");
 
-    showLoandingOverlay();
-
-    setTimeout(() => {
-        window.open("dados.html", "_blank");
-        
-        form.submit();
-    }, 500);
+    //COLOCAR MODAL 
+    showModal("Dados salvos!");
+    // alert("Dados salvos!");
 });
