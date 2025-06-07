@@ -3,6 +3,8 @@ const infoCliente = document.getElementById("info-cliente");
 const infoProduto = document.getElementById("info-produto");
 const infoPagamento = document.getElementById("info-pagamento");
 const infoObservacao = document.getElementById("info-obserProduto");
+const reparo = document.getElementById("reparos");
+const obserReparo = document.getElementById("obserReparo");
 
 const loandingOverlay = document.getElementById("loadingOverlay");
 function showLoandingOverlay(){
@@ -20,12 +22,6 @@ window.onload = function() {
     let estadoCliente = localStorage.getItem("estadoCliente");
     let cidadeCliente = localStorage.getItem("cidadeCliente");
     let bairroCliente = localStorage.getItem("bairroCliente");
-
-    //Resgatando a observação do produto
-  
-
-    let checkboxTelaComTouch = localStorage.getItem("checkboxTelaComTouch");
-    console.log(checkboxTelaComTouch);
 
     //Resgatando os produtos salvos
     const produtosSalvos = JSON.parse(localStorage.getItem("produtos"));
@@ -119,15 +115,28 @@ window.onload = function() {
         </div>
     `;
 
+    const checkboxesMarcado = JSON.parse(localStorage.getItem("checkboxesMarcado"));
+
+    if(checkboxesMarcado.length > 0){
+        checkboxesMarcado.forEach(checkbox => {
+            console.log(checkbox);
+        });
+    }
+    else{
+        console.log("Erro")
+    }
+    let obserReparo = localStorage.getItem("obserReparo");
+    console.log(obserReparo);
+
     
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
 
-    showLoandingOverlay();
-    setTimeout(() => {
-        loandingOverlay.classList.add("hidden");
+    // showLoandingOverlay();
+    // setTimeout(() => {
+    //     loandingOverlay.classList.add("hidden");
 
-        window.print();
-    }, 900);
+    //     window.print();
+    // }, 900);
 }
 

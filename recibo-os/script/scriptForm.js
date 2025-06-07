@@ -28,16 +28,8 @@ const buttonProduct = document.getElementById("add-produto");
 let contProdutos = 1;
 const produtos = [];
 
-const checkboxTelaComTouch = document.getElementById("checkboxTelaComTouch");
-const checkboxTelaSemTouch = document.getElementById("checkboxTelaSemTouch");
-const checkboxTampa = document.getElementById("checkboxTampa");
-const checkboxBotao = document.getElementById("checkboxBotao");
-const checkboxBateria = document.getElementById("checkboxBateria");
-const checkboxAltoFalante = document.getElementById("checkboxAltoFalante");
-const checkboxConector = document.getElementById("checkboxConector");
-const checkboxPlaca = document.getElementById("checkboxPlaca");
-const checkboxNaoLiga = document.getElementById("checkboxNaoLiga");
-const checkboxOutros = document.getElementById("checkboxOutros");
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const checkboxesMarcado = [];
 const obserReparo = document.getElementById("obserReparo");
 
 const loandingOverlay = document.getElementById("loadingOverlay");
@@ -207,10 +199,6 @@ form.addEventListener("submit", (event) => {
     localStorage.setItem("cidadeCliente", cidadeCliente.value);
     localStorage.setItem("bairroCliente", bairroCliente.value);
 
-    //Salvando checkbox reparo
-    localStorage.setItem("checkboxTelaComTouch", checkboxTelaComTouch.value);
-
-
     //Salvar produtos
     const selectProdutos = document.querySelectorAll(".produto");
     const listProdutos = [];
@@ -219,21 +207,26 @@ form.addEventListener("submit", (event) => {
         const nome = div.querySelector(".name-product").value;
         const quantidade = div.querySelector(".qtd-product").value;
         const valor = div.querySelector(".valor-product").value;
-
+        
         listProdutos.push({nome, quantidade, valor});
     });
     localStorage.setItem("produtos", JSON.stringify(listProdutos));
-
+    
     //Salvando forma de pagamaneto
     const formaSelecionada = selectPagamento.value;
-    // const valorPagar = valor.value;
-    // localStorage.setItem("valorPagar", valorPagar);
     localStorage.setItem("formaPagamento", formaSelecionada);
+    
+    //Salvando checkbox reparo
+    checkboxes.forEach((checkbox) => {
+        if(checkbox.checked){
+            checkboxesMarcado.push(checkbox.value);
+        }
+    });
 
-    //Salvando as observações
+    localStorage.setItem("checkboxesMarcado", JSON.stringify(checkboxesMarcado))
 
-
-    //COLOCAR MODAL 
+    if(obserReparo.value !== ""){
+        localStorage.setItem("obserReparo", obserReparo.value);
+    }
     showModal("Dados salvos!");
-    // alert("Dados salvos!");
 });
