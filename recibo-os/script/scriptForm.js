@@ -69,20 +69,13 @@ const addProduct = () => {
         <div id="${idProduto}" class="produto border-b-1 border-zinc-100/50 space-y-5 pb-5 w-full">
             <div class="flex flex-col">
                 <span class="flex flex-col">
-                    <label for="produto">Produto:</label>
+                    <label for="produto">Modelo:</label>
                     <input type="text" class="name-product bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
                 </span>
                 <p id="erro-produto"></p>
             </div>
 
             <div class="md:flex max-md:flex-col max-md:space-y-4 gap-5">
-                <div class="flex flex-col">
-                    <span class="flex flex-col">
-                        <label for="quantidadeProd">Quantidade:</label>
-                        <input type="number" class="qtd-product w-30 bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
-                    </span>
-                    <p id="erro-quantidade"></p>
-                </div>
                 <div class="flex flex-col">
                     <span class="flex flex-col">
                         <label for="valorProd">Valor:</label>
@@ -205,10 +198,9 @@ form.addEventListener("submit", (event) => {
 
     selectProdutos.forEach((div) => {
         const nome = div.querySelector(".name-product").value;
-        const quantidade = div.querySelector(".qtd-product").value;
         const valor = div.querySelector(".valor-product").value;
         
-        listProdutos.push({nome, quantidade, valor});
+        listProdutos.push({nome, valor});
     });
     localStorage.setItem("produtos", JSON.stringify(listProdutos));
     

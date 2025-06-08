@@ -4,7 +4,7 @@ const infoProduto = document.getElementById("info-produto");
 const infoPagamento = document.getElementById("info-pagamento");
 const infoObservacao = document.getElementById("info-obserProduto");
 const reparo = document.getElementById("reparos");
-const obserReparo = document.getElementById("obserReparo");
+const textObserReparo = document.getElementById("info-obserReparo");
 
 const loandingOverlay = document.getElementById("loadingOverlay");
 function showLoandingOverlay(){
@@ -78,7 +78,7 @@ window.onload = function() {
     const multiQtdValor = qtd.map((qtdProduto, index) => {
         // qtdProduto: qtdProduto,
         // valorA: valores[index],
-        return qtdProduto * valores[index];
+        return 1 * valores[index];
     });
     console.log(multiQtdValor)
 
@@ -99,8 +99,6 @@ window.onload = function() {
             `
                 <p>${produto.nome}</p>
                 <p>${produto.valor}</p>
-                <p>${produto.quantidade}</p>
-                <p>${multiQtdValor[index]}</p>
             `;
         });    
     }
@@ -119,16 +117,36 @@ window.onload = function() {
 
     if(checkboxesMarcado.length > 0){
         checkboxesMarcado.forEach(checkbox => {
+            reparo.innerHTML += 
+            `
+                <p class="border-b-1 ">${checkbox}</p>
+            `;
             console.log(checkbox);
         });
     }
     else{
+        reparo.innerHTML = 
+        `
+            <p>Nenhum reparo selecionado.</p>
+        `;
         console.log("Erro")
     }
-    let obserReparo = localStorage.getItem("obserReparo");
-    console.log(obserReparo);
 
-    
+    let obserReparo = localStorage.getItem("obserReparo");
+    if(obserReparo !== ""){
+        textObserReparo.innerHTML = 
+        `
+            <p>${obserReparo}</p>
+        `;
+        console.log(obserReparo);
+    }
+    else{
+        textObserReparo.innerHTML = 
+        `
+            <p>Nenhuma observação escrita.</p>
+        `;
+        console.log("Erro");
+    }
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
 
