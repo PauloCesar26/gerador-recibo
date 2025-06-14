@@ -48,7 +48,6 @@ const toggleModal = () => {
 const showModal = (message) => {
     modalMessage.textContent = message;
     toggleModal();
-
 };
 closeModal.addEventListener("click", () => {
     toggleModal();

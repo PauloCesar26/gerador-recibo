@@ -126,11 +126,11 @@ window.onload = function() {
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
 
-    // showLoandingOverlay();
-    // setTimeout(() => {
-    //     loandingOverlay.classList.add("hidden");
+    showLoandingOverlay();
+    setTimeout(() => {
+        loandingOverlay.classList.add("hidden");
 
-    //     window.print();
-    // }, 900);
+        window.print();
+    }, 900);
 }
 

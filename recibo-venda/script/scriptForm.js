@@ -135,77 +135,77 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     //Verificando dados e salvando as info do cliente
-    // if(nameCliente.value.trim() === ""){
-    //     erroName.textContent = "Preencha o nome corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroName.textContent = "";
-    // }
+    if(nameCliente.value.trim() === ""){
+        erroName.textContent = "Preencha o nome corretamente.";
+        return;
+    }
+    else{
+        erroName.textContent = "";
+    }
 
-    // if(emailCliente.value.trim() === ""){
-    //     erroEmail.textContent = "Preencha o email corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroEmail.textContent = "";
-    // }
+    if(emailCliente.value.trim() === ""){
+        erroEmail.textContent = "Preencha o email corretamente.";
+        return;
+    }
+    else{
+        erroEmail.textContent = "";
+    }
 
-    // if(cpfCliente.value.trim() === ""){
-    //     erroCpf.textContent = "Preencha o CPF corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroCpf.textContent = "";
-    // }
+    if(cpfCliente.value.trim() === ""){
+        erroCpf.textContent = "Preencha o CPF corretamente.";
+        return;
+    }
+    else{
+        erroCpf.textContent = "";
+    }
 
-    // if(cepCliente.value.trim() === ""){
-    //     erroCep.textContent = "Preencha o CEP corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroCep.textContent = "";
-    // }
+    if(cepCliente.value.trim() === ""){
+        erroCep.textContent = "Preencha o CEP corretamente.";
+        return;
+    }
+    else{
+        erroCep.textContent = "";
+    }
 
-    // if(addressCliente.value.trim() === ""){
-    //     erroAddress.textContent = "Preencha o endereço corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroAddress.textContent = "";
-    // }
+    if(addressCliente.value.trim() === ""){
+        erroAddress.textContent = "Preencha o endereço corretamente.";
+        return;
+    }
+    else{
+        erroAddress.textContent = "";
+    }
 
-    // if(numHomeCliente.value.trim() === ""){
-    //     erroResidencia.textContent = "Preencha o número da residencia corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroResidencia.textContent = "";
-    // }
+    if(numHomeCliente.value.trim() === ""){
+        erroResidencia.textContent = "Preencha o número da residencia corretamente.";
+        return;
+    }
+    else{
+        erroResidencia.textContent = "";
+    }
 
-    // if(estadoCliente.value.trim() === ""){
-    //     erroEstado.textContent = "Preencha o número da residencia corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroEstado.textContent = "";
-    // }
+    if(estadoCliente.value.trim() === ""){
+        erroEstado.textContent = "Preencha o número da residencia corretamente.";
+        return;
+    }
+    else{
+        erroEstado.textContent = "";
+    }
 
-    // if(selectPagamento.value === "") {
-    //     erroSelect.textContent = "Selecione uma forma de pagamaneto";
-    //     return;
-    // }
-    // else{
-    //     erroSelect.textContent = "";
-    // }
+    if(selectPagamento.value === "") {
+        erroSelect.textContent = "Selecione uma forma de pagamaneto";
+        return;
+    }
+    else{
+        erroSelect.textContent = "";
+    }
 
-    // if(valor.value.trim() === ""){
-    //     erroValor.textContent = "Preencha o valor corretamente.";
-    //     return;
-    // }
-    // else{
-    //     erroValor.textContent = "";
-    // }
+    if(valor.value.trim() === ""){
+        erroValor.textContent = "Preencha o valor corretamente.";
+        return;
+    }
+    else{
+        erroValor.textContent = "";
+    }
 
     localStorage.setItem("nameCliente", nameCliente.value);
     localStorage.setItem("emailCliente", emailCliente.value);
@@ -232,15 +232,11 @@ form.addEventListener("submit", (event) => {
 
     //Salvando forma de pagamaneto
     const formaSelecionada = selectPagamento.value;
-    // const valorPagar = valor.value;
-    // localStorage.setItem("valorPagar", valorPagar);
     localStorage.setItem("formaPagamento", formaSelecionada);
 
     //Salvando as observações
     localStorage.setItem("obserLacrado", obserLacrado.value);
     localStorage.setItem("obserSemiNovo", obserSemiNovo.value);
 
-    //COLOCAR MODAL 
     showModal("Dados salvos!");
-    // alert("Dados salvos!");
 });
