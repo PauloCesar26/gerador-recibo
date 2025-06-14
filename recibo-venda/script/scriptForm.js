@@ -199,14 +199,6 @@ form.addEventListener("submit", (event) => {
         erroSelect.textContent = "";
     }
 
-    if(valor.value.trim() === ""){
-        erroValor.textContent = "Preencha o valor corretamente.";
-        return;
-    }
-    else{
-        erroValor.textContent = "";
-    }
-
     localStorage.setItem("nameCliente", nameCliente.value);
     localStorage.setItem("emailCliente", emailCliente.value);
     localStorage.setItem("cpfCliente", cpfCliente.value);
