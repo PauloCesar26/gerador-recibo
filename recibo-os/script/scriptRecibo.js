@@ -136,16 +136,9 @@ window.onload = function() {
     if(obserReparo !== ""){
         textObserReparo.innerHTML = 
         `
-            <p>${obserReparo}</p>
+            <p>${obserReparo || ""}</p>
         `;
         console.log(obserReparo);
-    }
-    else{
-        textObserReparo.innerHTML = 
-        `
-            <p>Nenhuma observação escrita.</p>
-        `;
-        console.log("Erro");
     }
 
     assCliente.textContent = `Assinatura do ${nameCliente}`;
